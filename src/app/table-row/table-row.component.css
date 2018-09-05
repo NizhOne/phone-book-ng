@@ -1,0 +1,38 @@
+.table-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  font-size: 14px;
+  font-weight: 600;
+  align-items: center;
+  min-height: 35px;
+  cursor: pointer;
+  padding: 5px 60px;
+}
+
+.table-row:hover {
+  background-color: #F2F2F2;
+}
+
+.table-row__determining, .table-row__values_value {
+  width: 50%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: flex;
+}
+
+.table-row__values {
+  width: 50%;
+  display: flex;
+  flex-direction: row;
+}
+
+.table-row__button {
+  margin-right: 10px;
+}
+
+@media (max-width: 740px) {
+  .table-row {
+    padding: 0 10px;
+  }
+}
