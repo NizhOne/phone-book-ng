@@ -10,13 +10,11 @@
       (onDelete)="deleteItem($event)"
       (onEdit)="editItem($event)"></app-table-row>
   </div>
-  <!--<app-add-contact-->
-    <!--(onAdd)="addItem($event)"></app-add-contact>-->
   <button (click)="showDialog()">ADD CONTACT</button>
 </div>
 <app-dialog (close)="closeDialog()" *ngIf="isDialog">
   <app-add-contact
     (onAdd)="saveItem($event)"
-    [buttonName]="'save'"
+    buttonName="save"
     [isEditing]="isEditing"></app-add-contact>
 </app-dialog>
