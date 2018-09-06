@@ -1,4 +1,4 @@
-<div *ngIf="!isEditing">
+<div>
   <app-search-contact (search)="searchItem($event)"></app-search-contact>
   <div>
     <app-table-row
@@ -10,10 +10,13 @@
       (onDelete)="deleteItem($event)"
       (onEdit)="editItem($event)"></app-table-row>
   </div>
-  <app-add-contact
-    (onAdd)="addItem($event)"></app-add-contact>
+  <!--<app-add-contact-->
+    <!--(onAdd)="addItem($event)"></app-add-contact>-->
+  <button (click)="showDialog()">ADD CONTACT</button>
 </div>
-<div *ngIf="isEditing">
+<app-dialog (close)="closeDialog()" *ngIf="isDialog">
   <app-add-contact
-    (onAdd)="saveItem($event)" [isEditing]="isEditing"></app-add-contact>
-</div>
+    (onAdd)="saveItem($event)"
+    [buttonName]="'save'"
+    [isEditing]="isEditing"></app-add-contact>
+</app-dialog>

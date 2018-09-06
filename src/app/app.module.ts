@@ -7,6 +7,7 @@ import { TableComponent } from './table/table.component';
 import { AddContactComponent } from './add-contact/add-contact.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SearchContactComponent } from './search-contact/search-contact.component';
+import { DialogComponent } from './dialog/dialog.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { SearchContactComponent } from './search-contact/search-contact.componen
     TableRowComponent,
     TableComponent,
     AddContactComponent,
-    SearchContactComponent
+    SearchContactComponent,
+    DialogComponent
   ],
   imports: [
     BrowserModule,

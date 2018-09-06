@@ -10,32 +10,26 @@ export class TableActionsService {
   public searchResults: Array<RowData> = [];
   constructor(public apiService: LocalStorageService) {
     apiService.getFromStorage('tableData')
-      .then(response => this.tableData = response || [])
+      .then(response => this.tableData = response || []);
   }
-  public addItem(data: RowData) {
+  private addItem(data: RowData) {
     this.tableData.push(data);
-    this.apiService.setInStorage('tableData', this.tableData);
   }
   public removeItem(id: number) {
     this.tableData = this.tableData.filter(item => item.id !== id);
+  }
+  public updateTable(data: RowData) {
+    this.findItem(this.tableData, data.id) === -1 ?
+      this.addItem(data) :
+      this.updateItem(data);
     this.apiService.setInStorage('tableData', this.tableData);
   }
-  public getItems(): Array<RowData> {
-    return this.tableData;
+  private findItem(arr: Array<RowData>, rowDataId: number): number {
+    return arr.findIndex( item => item.id === rowDataId);
   }
-  public saveItem(data: RowData, id: number) {
-    this.tableData = this.tableData.map( item => {
-      if (item.id === id) {
-        data.id = id;
-        console.log(data);
-        return data;
-      } else {
-        return item;
-      }
-    });
-    this.apiService.setInStorage('tableData', this.tableData);
+  private updateItem(data: RowData) {
+    this.tableData = this.tableData.map( item => item.id === data.id ? data : item);
   }
-
   private searchInRow(row: object, searchString: string) {
     return Boolean(
       (Object.values(row)
@@ -49,7 +43,7 @@ export class TableActionsService {
     } else {
       this.searchResults = this.tableData
         .filter( itemObj =>
-          this.searchInRow(itemObj, searchString))
+          this.searchInRow(itemObj, searchString));
     }
   }
 }
