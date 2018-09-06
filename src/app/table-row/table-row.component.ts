@@ -13,15 +13,15 @@ export class TableRowComponent implements OnInit {
   @Output() onDelete = new EventEmitter<number>();
   @Output() onEdit = new EventEmitter<RowData>();
 
-  constructor(public actionService: TableActionsService) {}
+  constructor() {}
 
   ngOnInit() {}
 
   deleteItem(id) {
     this.onDelete.emit(id);
   }
-  editItem(id) {
-    this.onEdit.emit(this.rowData)
+  editItem() {
+    this.onEdit.emit(this.rowData);
   }
 
 }
