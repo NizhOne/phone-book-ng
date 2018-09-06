@@ -27,7 +27,6 @@ export class TableActionsService {
     this.tableData = this.tableData.map( item => {
       if (item.id === id) {
         data.id = id;
-        console.log(data);
         return data;
       } else {
         return item;
@@ -48,8 +47,7 @@ export class TableActionsService {
       this.searchResults = [];
     } else {
       this.searchResults = this.tableData
-        .filter( itemObj =>
-          this.searchInRow(itemObj, searchString))
+        .filter( itemObj => this.searchInRow(itemObj, searchString))
     }
   }
 }
