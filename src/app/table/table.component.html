@@ -1,0 +1,20 @@
+<div>
+  <app-search-contact (search)="searchItem($event)"></app-search-contact>
+  <div>
+    <app-table-row
+      [isHeader]="true"
+      [rowData]="{name: 'Name', phoneNumber: 'Phone number', email: 'Email'}"></app-table-row>
+    <app-table-row
+      *ngFor="let item of (tableAction.searchResults.length === 0 ? tableAction.tableData : tableAction.searchResults)"
+      [rowData]="item"
+      (onDelete)="deleteItem($event)"
+      (onEdit)="editItem($event)"></app-table-row>
+  </div>
+  <button (click)="showDialog()">ADD CONTACT</button>
+</div>
+<app-dialog (close)="closeDialog()" *ngIf="isDialog">
+  <app-add-contact
+    (onAdd)="saveItem($event)"
+    buttonName="save"
+    [isEditing]="isEditing"></app-add-contact>
+</app-dialog>

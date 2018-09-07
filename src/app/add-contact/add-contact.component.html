@@ -1,0 +1,6 @@
+<form class="add-contact" [formGroup]="form">
+  <input [ngClass]="{'error' : !isValid && name.invalid}" formControlName="name" placeholder="Name" />
+  <input [ngClass]="{'error' :   !isValid && phoneNumber.invalid}" formControlName="phoneNumber" placeholder="Phone Number"/>
+  <input [ngClass]="{'error' : !isValid && email.invalid}" formControlName="email" placeholder="Email"/>
+  <button (click)="onSubmit()">{{buttonName}}</button>
+</form>
